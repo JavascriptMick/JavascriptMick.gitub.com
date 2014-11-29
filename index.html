@@ -42,13 +42,16 @@
             <div class="fixed_middle">
                 <div class="menu_item" style="" ng-repeat="section in sections">
                     <a class="icon" ng-href="#/{{section.id}}">
-                        <img ng-src="img/{{section.id}}_icon.jpg" ng-class="{grey: section.isActive==false}"/>
+                        <img ng-src="img/{{section.id}}_icon.jpg" ng-class="{grey: section.isTopActive==false}"/>
                     </a>
                 </div>
             </div>
             <div class="break"></div>
-            <div class="fixed_middle">
+            <div class="title">
                 <h1>{{currentSection.display}} <span class="title_year">{{currentSection.year}}</span></h1>
+            </div>
+            <div id="tags_bar" ng-show="currentSection.tags">
+                <ul><li ng-repeat="tag in currentSection.tags">{{tag}}</li></ul>
             </div>
 
         </div>
@@ -70,88 +73,131 @@
                     </h4>
 				</section>
 
-                <section id="relearn" data-year="2014" data-display="ReLearn">
-                    <img src="img/relearn_concept.jpg"/>
-                    <p class="prose">
-                        ReLearn attempts to solve the problem of revising learned material by prompting users to revise at an optimum time for recall.  A work in progress, I am implementing
-                        a web based portal in Java, Spring MVC and AngularJS with plans for native mobile apps for Android (java) and IOS (swift).
-                    </p>
+                <section id="thisportfolio" data-year="2014" data-display="This Portfolio" data-tags="Javascript, reveal.js, AngularJS">
+                    <section id="whyportfolio" data-year="2014" data-display="This Portfolio" data-tags="Javascript, reveal.js, AngularJS">
+                        <p class="prose">
+                            I have been working in Corporate I.T. as a Developer, Manager, and Scrum master for over 15 Years but my real passion is using the best emergent technologies, open source and Lean principles.
+                        </p>
+                        <p class="prose">
+                            I created this portfolio to showcase my personal and OpenSource projects and the technologies I have used to build them.  I hope you like it.
+                        </p>
+                    </section>
+                    <section id="menudirective" data-year="2014" data-display="Menu Directive" data-tags="Javascript, reveal.js, AngularJS">
+
+                        <pre><code class=" hljs javascript" data-trim="" contenteditable="">
+angular.module('RevealMenuModule', [])
+    .directive('revealmenu', function(){
+        return {
+            link: function(scope, elem, attrs){
+                scope.sections = [];
+                //.......
+                Reveal.addEventListener('slidechanged', function(event) {
+                    //.......
+                });
+            }
+        }
+    });
+                        </code></pre>
+                        <p class="prose">
+                            Key menus are not supported by reveal.js.  to add one, I created an
+                            AngularJS directive to scrape presentation and extended data out of the DOM.  I was then able to build the menu using standard AngularJS binding.
+                        </p>
+                    </section>
+                    <section id="angularrevealmenu" data-year="2014" data-display="NGModules" data-tags="Javascript, reveal.js, AngularJS">
+                        <img src="img/angular-reveal-menu.png"/>
+                        <p class="prose">
+                            AngularJS directives (and Web Components but that's another story) are a great way to build re-useable components.  I have packaged the menu directive and published it to <a href="http://ngmodules.org/modules/angular-reveal-menu">NGModules.Org</a>, a great community resource for AngularJS.
+                        </p>
+                    </section>
                 </section>
 
-                <section id="thisportfolio" data-year="2014" data-display="About This Portfolio">
-                    <img src="img/angular-reveal-menu.png"/>
-                    <p class="prose">
-                        This Portfolio is implemented using Reveal.js and AngularJS.  I wrote a custom directive to allow the creation of the key menu and also published the directive to <a href="http://ngmodules.org/modules/angular-reveal-menu">NGModules.Org</a>.
-                    </p>
+                <section id="relearn" data-year="2014" data-display="ReLearn" data-tags="Javascript, Java, Spring MVC, Spring, AngularJS">
+                    <section id="relearn_top" data-year="2014" data-display="ReLearn" data-tags="Javascript, Java, Spring MVC, Spring, AngularJS">
+                        <img src="img/relearn_concept.jpg"/>
+                        <p class="prose">
+                            Do you know how when you are learning lots of stuff, and you don't remember to go back and revise it, you lose it?
+                            Well ReLearn is a solution that will help you to store and revise all of your key learnings.
+                            In fact our revision algorithm is based on cutting edge research and will help you to revise work at exactly the right time to maximise 'lock in'.
+                        </p>
+                    </section>
+                    <section id="relearn_how" data-year="2014" data-display="ReLearn" data-tags="Javascript, Java, Spring MVC, Spring, AngularJS">
+                        <p class="prose">
+                            ReLearn is a work in progress.  To build it, I am using a combination of technologies that has proven to be reliable and successful in my corporate work.
+                            The power of Java/Spring/MVC/rest on the Backend, and the flexibility and rapid workflow of AngularJS for the web client.
+                        </p>
+                    </section>
                 </section>
 
-
-                <section id="strongsheet" data-year="2014" data-display="StrongSheet.com">
+                <section id="strongsheet" data-year="2014" data-display="StrongSheet.com" data-tags="Balsamiq Mockups, PowToon">
                     <iframe width="560" height="315" src="//www.youtube.com/embed/_PDbE3PPo-U" frameborder="0" allowfullscreen></iframe>
 
                     <p class="prose">
-                        StrongSheet.com is an exercise in lean startup and internet marketing.  I used Lean Canvas to create business plans, customised an html template, created an introduction video using PowToon and a click-through wireframe using Balsamiq Mockups.
+                        StrongSheet.com is an idea that came from years of building applications to replace spreadsheets.
+                        Holding to Lean startup principles, I used Lean Canvas to create business plans, used an html template to get it out there early,
+                        created an introduction video using PowToon and a click-through wireframe using Balsamiq Mockups.
                     </p>
                 </section>
 
                 <section id="hackify" data-year="2013" data-display="Hackify.org">
-                    <section id="hackify" data-year="2013" data-display="Hackify.org">
+                    <section id="hackify_why" data-year="2013" data-display="Hackify.org" data-tags="Javascript, AngularJS, Node.js, Redis, Socket.IO, Nginx">
                         <img src="img/hackify.jpg"/>
                         <p class="prose">
-                            Hackify.org allows developers to instantly take code from their local machine and share it to an online collaborative IDE.  I implemented the solution using Node.js, Redis, Socket.io and AngularJS.
-                            I self hosted the solution on digital ocean with multiple Forever instances load balanced with nginx.  Hackify is 100% Open Source.
+                            Hackify.org was inspired by the realtime music sharing app plug.dj.  Wouldn't it be great I thought for developers to code together in a virtual space.
+                            I managed to achieve this by utilizing a publish-subscribe model with Node.js, Redis, Socket.io and AngularJS.
                         </p>
                     </section>
-                    <section id="hackify" data-year="2013" data-display="Hackify.org">
+                    <section id="hackify_use" data-year="2013" data-display="Use Case" data-tags="Javascript, AngularJS, Node.js, Redis, Socket.IO, Nginx">
                         <iframe width="420" height="315" src="//www.youtube.com/embed/ZfpiPp-WMrg" frameborder="0" allowfullscreen></iframe>
                         <p class="prose">
-                            During lean business modeling, I identified many use cases for Hackify.  One of the more interesting is using it to get help on programming problems.  This use case is illustrated in the video.
+                            One of the things you can do with Hackify is to reach out to a remote friend or colleague to get get help with your programming problems.
                         </p>
                     </section>
                 </section>
 
                 <section id="guidebyside" data-year="2013" data-display="Guide By Side">
-                    <section id="guidebyside" data-year="2013" data-display="Guide By Side">
+                    <section id="guidebyside_pitch" data-year="2013" data-display="Guide By Side" data-tags="Javascript, Node.js, AngularJS, Socket.IO, Ruby on Rails, MongoDB, Grunt">
                         <img src="img/guidebyside.jpg"/>
                         <p class="prose">
-                            GuideBySide provide interactive guides for online customers.  It was implemented by porting my C# RuleClarity engine to javascript/Node.js and introducing AngularJS and Socket.io for the web client and real time communications respectively.
+                            If you are lucky, when you walk into a store a sales assistant will help you.  She will ask questions and guide you to the right product.  GuideBySide attempts to be the sales assistant for online stores.
+                            To enable the question/answer interaction, I reprised my own C# RuleClarity engine and ported it to javascript/Node.js.
                         </p>
                     </section>
-                    <section id="guidebyside-shopify" data-year="2013" data-display="Shopify App">
+                    <section id="guidebyside-shopify" data-year="2013" data-display="Shopify App" data-tags="Javascript, Node.js, AngularJS, Socket.IO, Ruby on Rails, MongoDB, Grunt">
                         <img src="img/guidebyside-shopify.png"/>
                         <p class="prose">
-                            I converted the GuideBySide widget into a Shopify App.  It allowed shop owners to embed an interactive guide into their own shop.  Implementation was in Node.js, Express, MongoDB and AngularJS.
+                            Looking for more markets for the product, I converted GuideBySide into a Shopify App.  This presented some interesting challenges for example building the OAUTH integration with Shopify.
                         </p>
                     </section>
-                    <section id="guidebyside-shopify" data-year="2013" data-display="Shopify Widget">
+                    <section id="guidebyside-grunt" data-year="2013" data-display="Shopify Widget" data-tags="Javascript, Node.js, AngularJS, Socket.IO, Ruby on Rails, MongoDB, Grunt">
                         <iframe width="420" height="315" src="//www.youtube.com/embed/NYZEWLW6W6I" frameborder="0" allowfullscreen></iframe>
                         <p class="prose">
-                            Packaging the angular application as a widget with grunt was particularly interesting, in fact so interesting I made a video about it.
+                            Packaging the angular application as a widget with grunt was also interesting.  The video explains how I achieved this.
                         </p>
                     </section>
-                    <section id="guide-builder" data-year="2013" data-display="Guide Builder">
+                    <section id="guide-builder" data-year="2013" data-display="Guide Builder" data-tags="Javascript, Node.js, AngularJS, Socket.IO, Ruby on Rails, MongoDB, Grunt">
                         <img src="img/guide_builder.png"/>
                         <p class="prose">
-                            The guide builder is an interactive rule builder with a 'drag and snap' user experience inspired by the scratch programming tool.  I implemented this in AngularJS.
+                            To really make the app user friendly, I had to re-implement the 'drag and snap' rule builder that I had previously implemented in C#/winforms.  I achieved this with AngularJS but it required some
+                            tricky dancing with JQuery for the drag and drop.
                         </p>
                     </section>
 
                 </section>
 
                 <section id="spodgic" data-year="2012" data-display="Spodgic">
-                    <section id="spodgic" data-year="2012" data-display="Spodgic">
+                    <section id="spodgic_hook" data-year="2012" data-display="Spodgic" data-tags="Javascript, HTML5, PhoneGap, JQuery Mobile, Node.js, Maps API">
                         <img src="img/Spodgic-HiRes.png"/>
                         <p class="prose">
                             Spodgic is a real time, multiplayer geoactive RPG available for Android devices on Google Play. I implemented as a Mobile HTML5 solution using PhoneGap, JQuery Mobile, Node.js and Google Maps.
                         </p>
                     </section>
-                    <section id="spodgic-maps" data-year="2012" data-display="Google Maps Integration">
+                    <section id="spodgic-maps" data-year="2012" data-display="Google Maps Integration" data-tags="Javascript, HTML5, PhoneGap, JQuery Mobile, Node.js, Maps API">
                         <img src="img/spodgic_ss1.png"/>
                         <p class="prose">
                             Google Maps integration allows the user to use their current location as a 'battleground', placing factory units and monsters.
                         </p>
                     </section>
-                    <section id="spodgic-maps" data-year="2012" data-display="Gesture Based Combat">
+                    <section id="spodgic-gesture" data-year="2012" data-display="Gesture Based Combat" data-tags="Javascript, HTML5, PhoneGap, JQuery Mobile, Node.js, Maps API">
                         <img src="img/spodgic_gesture.png"/>
                         <p class="prose">
                             I leveraged a Javascript based gesture library over HTML5 Canvas to enable Gesture based combat.
@@ -160,36 +206,35 @@
                 </section>
 
                 <section id="clarity" data-year="2009" data-display="Rule Clarity">
-                    <section id="clarity" data-year="2009" data-display="Rule Clarity">
+                    <section id="clarity_why" data-year="2009" data-display="Rule Clarity" data-tags="C#, Winforms">
                         <img src="img/ruleclarity_interface.jpg"/>
                         <p class="prose">
                             RuleClarity is a Rules engine with an english language syntax.  Implemented in C#, it includes a core rule evaluation engine, a backend for storing and managing rules and an invocation API.  In addition, I implemented an integrated 'scratch' style drag-and-connect rule builder interface using Winforms.
                         </p>
                     </section>
-
-                    <section id="clarity" data-year="2009" data-display="Rule Clarity">
+                    <section id="clarity_semantic" data-year="2009" data-display="Rule Clarity" data-tags="C#, Winforms">
                         <object width="640" height="498"> <param name="movie" value="http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/bootstrap.swf"> <param name="quality" value="high"> <param name="bgcolor" value="#FFFFFF"> <param name="flashVars" value="thumb=http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/FirstFrame.jpg&amp;width=640&amp;height=498&amp;content=http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/SemanticRulesTechPreview.swf"> <param name="allowFullScreen" value="true"> <param name="scale" value="showall"> <param name="allowScriptAccess" value="always"> <param name="base" value="http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/">  <embed src="http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/bootstrap.swf" quality="high" bgcolor="#FFFFFF" type="application/x-shockwave-flash" allowscriptaccess="always" flashvars="thumb=http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/FirstFrame.jpg&amp;width=640&amp;height=498&amp;content=http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/SemanticRulesTechPreview.swf" allowfullscreen="true" base="http://content.screencast.com/users/MichaelDausmann/folders/Default/media/9e339c0f-de31-40d1-ab57-8b1d0d41c948/" scale="showall" width="640" height="498"> </object>
                         <p class="prose">
-                            The rules engine was built on a technology that I created and termed 'Semantic Rules' which I explain in this (rather long) video.
+                            The rules engine was built on a technology that I created and termed 'Semantic Rules' which I explain in this video.
                         </p>
                     </section>
                 </section>
 
-                <section id="smsholdem" data-year="2009" data-display="SMS Holdem">
+                <section id="smsholdem" data-year="2009" data-display="SMS Holdem" data-tags="C#, ASP.Net, Joomla, MySQL">
                     <img src="img/smsholdem.jpg"/>
                     <p class="prose">
                         SMS Holdem allows you to play a game of Texas Holdem poker with other players by sending and receiving SMS messages.  I implemented the solution including my own poker engine in C#, ASP.Net, Joomla and MySQL
                     </p>
                 </section>
 
-                <section id="zilch" data-year="2008" data-display="Zilch">
+                <section id="zilch" data-year="2008" data-display="Zilch" data-tags="C#, ASP.Net">
                     <img src="img/zilch.png"/>
                     <p class="prose">
                         Zilch is a multiplayer dice game implemented in C# and ASP.Net.
                     </p>
                 </section>
 
-                <section id="poweredbyusers" data-year="2004" data-display="Powered By Users">
+                <section id="poweredbyusers" data-year="2004" data-display="Powered By Users" data-tags="C#, ASP.Net, XSLT">
                     <img src="img/poweredbyusers.jpg"/>
                     <p class="prose">
                         PoweredByUsers is a content management and site generation solution designed to allow non technical users to update and publish a website.  The site was data driven and extensible with modules like News and file downloads.  I implemented the solution in C#, ASP.Net and XSLT.

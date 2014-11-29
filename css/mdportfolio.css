@@ -16,17 +16,53 @@ img.grey:hover {
 }
 
 .prose{
-    font-size: .6em !important;
+    font-size: .8em !important;
 }
 
 #menu_container{
     overflow:hidden;
+    position: absolute;
+    z-index: 20;
 }
 
 .fixed_middle{
     overflow:hidden;
     width: 768px;
     margin:0 auto;
+}
+
+.title{
+    position: fixed;
+    left: 40px;
+    width: 200px;
+    top: 70px;
+    z-index: 1000;
+    /*opacity: 0;*/
+    /*transition: opacity 0.1s linear 0s;*/
+    /*font-size: 20px;*/
+    /*line-height: 24px;*/
+}
+
+.title_year{
+    font-size: 0.7em;
+    position: relative;
+    top: -8px;
+}
+
+#tags_bar{
+    position: fixed;
+    right: 0;
+    top: 20px;
+    /*margin: 0 auto;*/
+    height: 448px;
+    padding: 50px;
+}
+
+#tags_bar ul{
+    list-style: none;
+    color: #93A1A1;
+    font-family: "League Gothic",Impact,sans-serif;
+    font-size: 2em;
 }
 
 .menu_item{
@@ -45,11 +81,5 @@ h1{
     color: #93A1A1;
     font-weight: normal;
     font-family: "League Gothic",Impact,sans-serif;
-}
-
-.title_year{
-    font-size: 0.7em;
-    position: relative;
-    top: -8px;
 }
 
